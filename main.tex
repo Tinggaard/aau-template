@@ -1,0 +1,35 @@
+\documentclass[11pt,twoside,a4paper,openright]{report}
+\input{setup/preamble.tex}
+\input{setup/macros.tex}
+
+\newcounter{Rev} % Revision counter
+\setcounter{Rev}{0} % Set the revision counter to the number of the current revision
+
+\begin{document}
+% Frontmatter
+\pagestyle{empty} % Disable headers and footers
+\pagenumbering{roman} % Use roman page numbering in the frontmatter
+\input{specials/frontpage.tex}
+\input{specials/colophon.tex}
+\input{specials/titlepages.tex}
+\cleardoublepage
+
+% TOC
+\pdfbookmark[0]{Contents}{label:contents}
+\setcounter{tocdepth}{1} % Determine depth of table of contents. 0 - 4
+\tableofcontents
+\cleardoublepage
+
+% Mainmatter
+\pagestyle{fancy} % Enable headers and footers again
+\pagenumbering{arabic} % Use arabic page numbering in the mainmatter
+\input{chapters/introduction}
+\input{chapters/problem_analysis/some-section}
+
+\appendix
+\input{chapters/appendix/examples}
+
+% backmatter
+\printbibliography[heading=bibintoc, title=References]
+
+\end{document}
