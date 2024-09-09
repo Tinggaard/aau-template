@@ -1,6 +1,6 @@
 \documentclass[11pt,twoside,a4paper,openright]{report}
-\input{setup/preamble.tex}
-\input{setup/macros.tex}
+\input{setup/preamble}
+\input{setup/macros}
 
 \newcounter{Rev} % Revision counter
 \setcounter{Rev}{0} % Set the revision counter to the number of the current revision
@@ -9,9 +9,10 @@
 % Frontmatter
 \pagestyle{empty} % Disable headers and footers
 \pagenumbering{roman} % Use roman page numbering in the frontmatter
-\input{specials/frontpage.tex}
-\input{specials/colophon.tex}
-\input{specials/titlepages.tex}
+\input{specials/frontpage}
+\input{specials/colophon}
+\input{specials/titlepages}
+\input{specials/preface}
 \cleardoublepage
 
 % TOC
@@ -21,15 +22,24 @@
 \cleardoublepage
 
 % Mainmatter
+\acresetall{}
 \pagestyle{fancy} % Enable headers and footers again
 \pagenumbering{arabic} % Use arabic page numbering in the mainmatter
-\input{chapters/introduction}
-\input{chapters/problem_analysis/some-section}
-
-\appendix
-\input{chapters/appendix/examples}
+\subfile{chapters/introduction}
+\subfile{chapters/problem-analysis}
 
 % backmatter
+\chapter*{List of Acronyms}\label{chap:acro}
+\addcontentsline{toc}{chapter}{\nameref{chap:acro}} % add to TOC
+\begin{acronym}
+    \acro{AST}{Abstract Syntax Tree}
+    \acro{RNG}{Random Number Generation}
+    \acro{CLI}{Command Line Interface}
+\end{acronym}
+
 \printbibliography[heading=bibintoc, title=References]
+
+\appendix
+\subfile{chapters/appendix}
 
 \end{document}

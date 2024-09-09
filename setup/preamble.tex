@@ -143,6 +143,7 @@
 \usepackage{lastpage}
 % better quotes
 \usepackage[autostyle, threshold=0]{csquotes}
+\MakeOuterQuote{"}
 % Add appendicies
 \usepackage[page, titletoc]{appendix}
 % add strikeout, for revinsioning
@@ -179,3 +180,10 @@
 	pdfstartview=FitH,%
   bookmarksdepth=2% set the depth of the pdf toc
 }
+
+% Allow subfiling for faster compilation
+\usepackage{subfiles}
+
+% Acronyms
+\usepackage[acronym]{glossaries} 
+\usepackage[printonlyused,withpage]{acronym}
